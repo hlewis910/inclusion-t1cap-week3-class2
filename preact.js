@@ -34,7 +34,15 @@ class Component {
         // pass the onclick function 
         if (result.onclick) {
             element.onclick = result.onclick;
-        }            
+        }
+
+        // if children exist, mount and render them. 
+        if (result.children) {
+            result.children.forEach(child => {
+                element.appendChild(child.ref);
+                child.update();
+            });
+        }
 
         //finally render the parent. 
         this.ref.appendChild(element);

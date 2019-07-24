@@ -22,36 +22,45 @@ class NameButton extends Component {
         return {
             tag: 'button',
             body: 'Clicked ' + this.state.counter + ' times ✔',
-            onclick: this.say.bind(this)
+            onclick: this.handleOnClick.bind(this)
         };
     }
 }
-  
 
+// we can just create a br tag without any exta stuff too. 
+class Separator extends Component {
+    render() {
+        return {
+            tag: 'br',
+            body: '',
+        }
+    }
+}
 
 class App extends Component {
 
     constructor(props, ref) {
         super(props, ref);
     }
-
-    handleOnClick() {
-        console.log('test');
-    }
   
     render() {
         return {
             tag: 'div',
-            body: 'Test',
-            // onclick: this.handleOnClick.bind(this)
-            onclick: console.log('test')
+            body: 'These buttons are both individual components that contain their own state.',
+            children: [
+                new Separator({}),
+                new NameButton({}),
+                new Separator({}),
+                new NameButton({
+                    name: 'Clark Kent'
+                })
+            ]
         };
     }
 }
 
-// const app = new App({}, 'app');
-// app.update();
+const app = new App({}, 'app');
+app.update();
   
-
-const button = new NameButton({}, 'app');
-button.update();
+// const button = new NameButton({}, 'app');
+// button.update();
