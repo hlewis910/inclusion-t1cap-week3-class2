@@ -4,3 +4,8 @@ body {
 h1 {
     font-family: 'Roboto Condensed', sans-serif;
 }
+
+#layout {
+    margin: 0.5em;
+    text-align: center;
+}
