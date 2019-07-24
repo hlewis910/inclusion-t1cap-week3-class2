@@ -4,9 +4,17 @@ class Component {
     constructor(props, ref = 'e' + Date.now()) {
         this.state = {};
         this.props = props;
+        
         //find or create a dom element to use as the mount point
         this.ref = document.getElementById(ref) || document.createElement('div');
         this.ref.id = ref;
+    }
+
+    // use object spread to allow partial updates to state. 
+    // just like in react
+    setState(obj){
+        this.state = {...this.state, ...obj};
+        this.update();
     }
 
     update() {
@@ -30,6 +38,8 @@ class Component {
 
         //finally render the parent. 
         this.ref.appendChild(element);
+
+        console.debug(this.state);
     }
 
     render() { return null }
