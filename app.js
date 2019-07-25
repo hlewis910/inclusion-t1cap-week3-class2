@@ -15,12 +15,17 @@ handleOnClick() {
     })
 }
 
-// class Seperator extends Component {
+class Seperator extends Component {
+    constructor(props, ref) {
+        super(props,ref)
+        this.state = {
+            name: ''
+        }
+    }
+    render() {
 
-//     render() {
-
-//     }
-// }
+    }
+}
 
 class App extends Component {
 
@@ -41,7 +46,9 @@ class App extends Component {
             onclick: this.handleOnClick.bind(this)
             //onclick: console.log('test')
             children: [
-
+                new Seperator({}),
+                new Button({}),
+                new Seperator({}),
             ]
         };
     }
